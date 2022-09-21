@@ -14,11 +14,12 @@
     if (isset($_POST["upload"])) {
         $file_name = $_POST["file_name"];
         $file = $_FILES["file"];
-        if ($_FILES['file']['size'] >  1000000) {
+        $name = $_FILES["file"]["name"];
+        if ($_FILES['file']['size'] >  11000000) {
             echo ("File too big");
             exit();
         }
-
+        var_dump($file);
         $file_dir = "uploads/";
 
         $file_name_array = explode(".", $file["name"]);
@@ -35,7 +36,7 @@
 
         $file_name_generated = $random_string . "." . $file_extension;
 
-        $file_path = '/Users/bhava/Studijos/php/5-FILES-COOKIES-SESSIONS/assignment/file/' . $file_dir . $file_name_generated;
+        $file_path = '/Users/bhava/Studijos/php/5-FILES-COOKIES-SESSIONS/assignment/file/' . $file_dir . $name;
 
         $filename = $file_path;
         if (move_uploaded_file($file["tmp_name"], $file_path)) {
