@@ -10,6 +10,11 @@
 </head>
 
 <body>
+    <?php
+    if (isset($_COOKIE['login'])) {
+        header("Location: ./manopaskyra.php");
+    }
+    ?>
     <form class="form" action="login.php" method="post">
         <input type="text" minlength="4" name="name">
         <input type="password" minlength="4" name="password">
