@@ -15,7 +15,7 @@
         $file_name = $_POST["file_name"];
         $file = $_FILES["file"];
         $name = $_FILES["file"]["name"];
-        if ($_FILES['file']['size'] >  11000000) {
+        if ($_FILES['file']['size'] >  1000000) {
             echo ("File too big");
             exit();
         }
