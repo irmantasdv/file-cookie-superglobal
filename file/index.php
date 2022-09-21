@@ -18,22 +18,24 @@
             echo ("File too big");
             exit();
         }
-        var_dump($file);
 
         $file_dir = "uploads/";
 
         $file_name_array = explode(".", $file["name"]);
 
         $file_extension =  $file_name_array[1];
+        if(strtolower($file_extension) !== 'pdf'){
+            echo("not a PDF file.");
+            exit();
+        }
 
         $time = time();
-        //time dabartinis laikas sekundemis nuo 1970
         $random_string = $file_name_array[0] . $time;
 
 
         $file_name_generated = $random_string . "." . $file_extension;
 
-        $file_path = '/Users/bhava/Studijos/php/5-FILES-COOKIES-SESSIONS/files/' . $file_dir . $file_name_generated;
+        $file_path = '/Users/bhava/Studijos/php/5-FILES-COOKIES-SESSIONS/assignment/file/' . $file_dir . $file_name_generated;
 
         $filename = $file_path;
         if (move_uploaded_file($file["tmp_name"], $file_path)) {
